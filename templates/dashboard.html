@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Solution</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- navbar section starts -->
+    <header class="header">
+        <div class="logo">
+            <h1> C L O U D *</h1>
+        </div>
+
+        <nav class="navbar">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#features">About</a></li>
+              <li><a href="#download">Create Container</a></li>
+              
+              <li><a href="#footer">Contact</a></li>
+              <li>
+              <form action="/my_containers" method="GET">
+                <button type="submit" class="btn">My containers</button>
+              </form></li>
+              <li>
+                <form action="/logout" method="POST">
+                  <button type="submit" class="btn">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </nav>
+          
+
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </header>
+    <!-- navbar section ends -->
+
+    <!-- home section starts -->
+    <section class="home" id="home">
+        <div class="content">
+            <h1>Cloud Solution IRIC II</h1>
+            <p>A cloud solution refers to a computing model where resources, such as servers, storage, databases, software applications, and networking, are provided over the internet by a third-party provider. These resources are typically hosted in data centers and are accessed by users via the internet.</p>
+            <a href="https://development.asia/explainer/why-cloud-computing-key-enabler-digital-government" class="home-btn">More infos</a>
+        </div>
+
+        <div class="image">
+            <img src="{{ url_for('static', filename='2.svg') }}" alt="illustration-hero">
+        </div>
+    </section>
+    <!-- home section ends -->
+
+    <!-- features section starts -->
+    <section class="features" id="features">
+        <div class="heading">
+            <div class="card contact-form-container">
+                <h1>About</h1>
+                <p>Common types of cloud solutions include Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Cloud solutions have become increasingly popular due to their flexibility, cost-effectiveness, and scalability. Many organizations are adopting cloud computing to streamline their operations, improve their agility, and reduce IT expenses.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 1 Tab -->
+            <div class="image">
+                <img src="{{ url_for('static', filename='iaas-intro-01.png') }}" alt="illustration-features-tab-1">
+            </div>
+
+            <div class="content">
+                <h1>Infrastructure as a Service (IaaS):</h1>
+                <p>Provides virtualized computing resources like virtual machines, storage, and networking infrastructure. Users have control over the operating systems and applications they run on the provided infrastructure.</p>
+                <a href="https://www.filecloud.com/blog/2020/03/what-is-iaas-infrastructure/" class="all-btn">more info</a>
+            </div>
+            <!-- 1 Tab -->
+
+            <!-- 2 Tab -->
+            <div class="content">
+                <h1>Platform as a Service (PaaS):</h1>
+                <p>Offers a platform and environment for developing, testing, and deploying applications. PaaS providers handle the underlying infrastructure, allowing developers to focus on application development.</p>
+                <a href="https://www.milesweb.in/hosting/cloud-hosting/what-is-paas" class="all-btn">more info</a>
+            </div>
+
+            <div class="image">
+                <img src="{{ url_for('static', filename='paas-intro.png') }}" alt="illustration-features-tab-2">
+            </div>
+            <!-- 2 Tab -->
+
+            <div class="image">
+                <img src="{{ url_for('static', filename='saas-intro-1.png') }}" alt="illustration-features-tab-3">
+            </div>
+
+            <div class="content">
+                <h1>Software as a Service (SaaS):</h1>
+                <p>Delivers software applications over the internet on a subscription basis. Users can access the software through a web browser or client application without needing to manage the underlying infrastructure.</p>
+                <a href="https://www.milesweb.com/hosting/cloud-hosting/what-is-saas" class="all-btn">more info</a>
+            </div>
+            <!-- 3 Tab -->
+        </div>
+    </section>
+    <!-- features section ends -->
+
+    <!-- downloads section starts -->
+    <section role="region" aria-label="contact-form" class="site-main-section" id="download">
+        <div class="container">
+            <div class="card contact-form-container">
+                <div class="clearfix">
+                    <div class="col-1-2">
+                        <div class="heading">
+                            <h1>Create Container</h1>
+                            <form action="/create_container" method="POST" class="add-book-form">
+                                <div class="form-group">
+                                    <label for="containerName">Container Name:</label>
+                                    <input required type="text" id="containerName" class="form-input" name="container_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sshUsername">SSH Username:</label>
+                                    <input required type="text" id="sshUsername" class="form-input" name="ssh_username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sshPassword">SSH Password:</label>
+                                    <input required type="password" id="sshPassword" class="form-input" name="ssh_password">
+                                </div>
+                                <input type="submit" value="Create Container" class="button button-primary float-right" />
+                                {% if container_info %}
+                                <h2>Container Deployment Status:</h2>
+                                <p>{{ container_info }}</p>
+                                {% endif %}
+                                {% if container_ip %}
+                                <h2>Container IP Address:</h2>
+                                <p>{{ container_ip }}</p>
+                                {% endif %}
+                                {% if error_message %}
+                                <h2>Error:</h2>
+                                <p>{{ error_message }}</p>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- downloads section ends -->
+
+
+             
+        
+                
+                   
+              
+                  
+           
+
+    <!-- downloads section ends -->
+
+
+
+    <!-- footer section starts  -->
+
+   <section class="footer" id="footer">
+       <div class="box-container">
+           <div class="box">
+               <h3>quick links</h3>
+               <a href="#home"><i class="fas fa-chevron-right"></i>HOME</a>
+               <a href="#features"><i class="fas fa-chevron-right"></i>ABOUT</a>
+               <a href="#download"><i class="fas fa-chevron-right"></i>CREATE CONTAINER</a>
+               <a href="#table"><i class="fas fa-chevron-right"></i>MY CONTAINERS</a>
+               <a href="#contact"><i class="fas fa-chevron-right"></i>CONTACT</a>
+            </div>
+            
+            
+
+
+           <div class="box" id="contact">
+               <h3>contact info</h3>
+               <a href="#"><i class="fas fa-phone"></i>+212523492335</a>
+               <a href="#"><i class="fas fa-phone"></i>+212618534372</a>
+               <a href="#"><i class="fas fa-envelope"></i>contact.ensak@usms.ma</a>
+               <a href="#"><i class="fas fa-map-marker-alt"></i> Ecole Nationale des Sciences Appliquées Bd Béni Amir, BP 7 Khouribga - Maroc.</a>
+           </div>
+
+           <div class="box">
+               <h3>follow us</h3>
+               <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
+               <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
+               <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+               <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+               <a href="#"><i class="fab fa-pinterest"></i>pinterest</a>
+           </div>
+       </div>
+
+
+       <div class="credit">created by
+           <a href="#" target="_blank"><span>IRIC II</span> | all rights reserved</a>
+       </div>
+   </section>
+
+    <!-- footer section ends -->
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
